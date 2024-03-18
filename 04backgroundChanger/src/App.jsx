@@ -1,52 +1,43 @@
 import { useState } from "react";
-import "./App.css";
 
 function App() {
   const [color, setColor] = useState("olive");
 
+  const handleColorChange = (newColor) => {
+    setColor(newColor);
+  };
+
   return (
-    <div className="app-container" style={{ backgroundColor: color }}>
-      <div className="button-container">
-        {/* Red */}
-        <button onClick={() => setColor("red")} className="button red">
-          Red
-        </button>
-        {/* Green */}
-        <button onClick={() => setColor("green")} className="button green">
-          Green
-        </button>
-        {/* Blue */}
-        <button onClick={() => setColor("blue")} className="button blue">
-          Blue
-        </button>
-        {/* Yellow */}
-        <button onClick={() => setColor("yellow")} className="button yellow">
-          Yellow
-        </button>
-        {/* White */}
-        <button onClick={() => setColor("white")} className="button white">
-          White
-        </button>
-        {/* Black */}
-        <button onClick={() => setColor("black")} className="button black">
-          Black
-        </button>
-        {/* Pink */}
-        <button onClick={() => setColor("pink")} className="button pink">
-          Pink
-        </button>
-        {/* Violet */}
-        <button onClick={() => setColor("violet")} className="button violet">
-          Violet
-        </button>
-        {/* Brown */}
-        <button onClick={() => setColor("brown")} className="button brown">
-          Brown
-        </button>
-        {/* Grey */}
-        <button onClick={() => setColor("grey")} className="button grey">
-          Grey
-        </button>
+    <div
+      className="w-full h-screen duration-200"
+      style={{ backgroundColor: color }}
+    >
+      <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2">
+        <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
+          {[
+            "red",
+            "green",
+            "blue",
+            "white",
+            "yellow",
+            "black",
+            "purple",
+            "grey",
+            "pink",
+            "orange",
+          ].map((btnColor) => (
+            <button
+              key={btnColor}
+              onClick={() => handleColorChange(btnColor)}
+              className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
+              style={{ backgroundColor: btnColor ,
+              color: btnColor === "white" || btnColor === "yellow" ? "#000000" : "#ffffff"
+            }}
+            >
+              {btnColor.charAt(0).toUpperCase() + btnColor.slice(1)}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
